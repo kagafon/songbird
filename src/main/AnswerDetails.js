@@ -1,12 +1,5 @@
-import React, { useState, useEffect, useContext, useCallback } from 'react';
-import {
-  Button,
-  makeStyles,
-  List,
-  ListItem,
-  ListItemText,
-} from '@material-ui/core';
-import { GameContext, DataContext } from 'Сontext';
+import React from 'react';
+import { makeStyles } from '@material-ui/core';
 import ReactAudioPlayer from 'react-audio-player';
 
 const useStyles = makeStyles(() => ({
@@ -47,9 +40,7 @@ function AnswerDetails({ answer }) {
         </div>
       </div>
 
-      <div className={classes.answerDescriptionRow}>
-        {answer.description}
-      </div>
+      <div className={classes.answerDescriptionRow}>{answer.description}</div>
     </React.Fragment>
   );
 }

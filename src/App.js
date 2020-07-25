@@ -2,17 +2,12 @@ import React, { useState, useCallback, useEffect } from 'react';
 import {
   Button,
   makeStyles,
-  List,
-  ListItem,
-  ListItemText,
-  Modal,
   Dialog,
   DialogTitle,
   Typography,
   DialogActions,
 } from '@material-ui/core';
 
-import logo from './logo.svg';
 import './App.css';
 
 import { GameContext, DataContext } from './Сontext';

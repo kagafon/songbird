@@ -1,10 +1,8 @@
-import React, { useState, useEffect, useContext } from 'react';
-import { Button, makeStyles } from '@material-ui/core';
-import { GameContext, DataContext } from 'Сontext';
+import React from 'react';
+import { makeStyles } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   headerItem: {
-    textAlign: 'center',
     border: '1px solid black',
     backgroundColor: (props) => {
       if (props.lvl < props.level) return theme.palette.success.main;

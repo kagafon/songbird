@@ -1,13 +1,9 @@
-import React, { useState, useEffect, useContext, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
-  Button,
+
   makeStyles,
   List,
-  ListItem,
-  ListItemText,
 } from '@material-ui/core';
-import { GameContext, DataContext } from 'Сontext';
-import ReactAudioPlayer from 'react-audio-player';
 import AnswerDetails from './AnswerDetails';
 import AnswerOption from './AnswerOption';
 

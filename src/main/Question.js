@@ -1,6 +1,5 @@
-import React, { useState, useEffect, useContext } from 'react';
-import { Button, makeStyles } from '@material-ui/core';
-import { GameContext, DataContext } from 'Сontext';
+import React from 'react';
+import { makeStyles } from '@material-ui/core';
 import ReactAudioPlayer from 'react-audio-player';
 
 const useStyles = makeStyles(() => ({
@@ -39,8 +38,6 @@ const useStyles = makeStyles(() => ({
 
 function Question({ answer, solved }) {
   const classes = useStyles({ answer, solved });
-  const { params } = useContext(GameContext);
-  const { data } = useContext(DataContext);
   return (
     <div className={classes.question}>
       <div className={classes.image}></div>

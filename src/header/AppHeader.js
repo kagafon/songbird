@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useContext } from 'react';
-import { Button, makeStyles } from '@material-ui/core';
-import { GameContext, DataContext } from 'Сontext';
+import React, { useContext } from 'react';
+import { makeStyles } from '@material-ui/core';
+import { DataContext } from 'Сontext';
 import HeaderItem from './HeaderItem';
 
 const useStyles = makeStyles(() => ({
@@ -19,7 +19,6 @@ const useStyles = makeStyles(() => ({
 
 function AppHeader({ level, score }) {
   const classes = useStyles();
-  const { params } = useContext(GameContext);
   const { data } = useContext(DataContext);
   return (
     <header className={classes.header}>
