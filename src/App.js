@@ -72,7 +72,6 @@ function App() {
             size="large"
             disabled={!solved}
             onClick={() => {
-              setScore(score + scoreToAdd);
               loadNextLevel(level + 1);
             }}
           >
@@ -87,6 +86,8 @@ function App() {
                 : (answer) => {
                     const checkResult = answer.id === currentAnswer.id;
                     if (!checkResult) setScoreToAdd(scoreToAdd - 1);
+                    else setScore(score + scoreToAdd);
+
                     setSolved(checkResult);
                     return checkResult;
                   }
