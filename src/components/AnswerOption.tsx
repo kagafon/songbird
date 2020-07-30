@@ -16,8 +16,15 @@ export const AnswerOption = ({
   const [checkResult, setCheckResult] = React.useState<boolean>();
   //const [play] = useSound('assets/audio/hover.ogg', { volume: 0.5 });
 
+  React.useEffect(() => {
+    setCheckResult(undefined);
+  }, [answer]);
+
   const onClick = React.useCallback(() => {
-    setCheckResult(onSelectAnswer(answer));
+    const result = onSelectAnswer(answer);
+    setCheckResult((prevCheck) =>
+      prevCheck === undefined ? result : prevCheck
+    );
   }, [onSelectAnswer, answer]);
 
   if (checkResult === undefined)
@@ -29,4 +36,3 @@ export const AnswerOption = ({
     </Button>
   );
 };
-
