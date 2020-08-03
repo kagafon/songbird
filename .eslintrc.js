@@ -1,3 +1,5 @@
+const path = require('path');
+
 module.exports = {
   parser: '@typescript-eslint/parser',
   env: {
@@ -55,7 +57,7 @@ module.exports = {
     'import/resolver': {
       node: {
         extensions: ['.js', '.jsx', '.ts', '.tsx'],
-        moduleDirectory: ['node_modules', 'src'],
+        moduleDirectory: ['node_modules', path.resolve(__dirname, './src/')],
       },
     },
     react: {

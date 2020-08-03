@@ -1,8 +1,11 @@
-/* eslint-disable react/no-array-index-key */
 import * as React from 'react';
-import { Item, Container } from 'semantic-ui-react';
+import { Item, Container, Button } from 'semantic-ui-react';
 
 import { AudioPlayer } from 'components/AudioPlayer';
+import { useSelector, useDispatch } from 'react-redux';
+import { QuizState } from 'store/root-reducer';
+import { IAnswer } from 'components/commonTypes';
+import { loadNextLevel } from 'store/root-redux';
 
 export interface QuestionBlockProps {
   title: string;
@@ -11,24 +14,38 @@ export interface QuestionBlockProps {
   solved: boolean;
 }
 
-export const QuestionBlock = ({
-  title,
-  imageUrl,
-  audioUrl,
-  solved,
-}: QuestionBlockProps): JSX.Element => {
-  return (
-    <Container>
-      <Item>
-        <Item.Image size="small" src={imageUrl} />
+export const QuestionBlock = (): JSX.Element => {
+  const rightAnswer = useSelector<QuizState, IAnswer>(
+    (state) => state.rightAnswer
+  );
+  const solved = useSelector<QuizState, boolean>((state) => state.solved);
+  const dispatch = useDispatch();
 
-        <Item.Content>
-          <Item.Header>{solved ? title : '****************'}</Item.Header>
-        </Item.Content>
-        <Item.Description>
-          <AudioPlayer track={audioUrl} playing pause={solved} />
-        </Item.Description>
-      </Item>
-    </Container>
+  React.useEffect(() => {
+    loadNextLevel(dispatch);
+  }, [dispatch]);
+
+  return rightAnswer ? (
+    <>
+      <Container>
+        <Item>
+          <Item.Image size="small" src={rightAnswer.image} />
+
+          <Item.Content>
+            <Item.Header>
+              {solved ? rightAnswer.name : '****************'}
+            </Item.Header>
+          </Item.Content>
+          <Item.Description>
+            <AudioPlayer track={rightAnswer.audio} playing pause={solved} />
+          </Item.Description>
+        </Item>
+      </Container>
+      <Button disabled={!solved} onClick={() => loadNextLevel(dispatch)}>
+        Дальше
+      </Button>
+    </>
+  ) : (
+    <>Загружаемся...</>
   );
 };

@@ -1,8 +1,9 @@
-/* eslint-disable react/no-array-index-key */
 import * as React from 'react';
-import { Statistic, Step, Icon, Segment } from 'semantic-ui-react';
-//import { Score } from './Score';
+import { Segment } from 'semantic-ui-react';
+import { useSelector } from 'react-redux';
+import { QuizState, Level } from 'store/root-reducer';
 import { LevelTitle } from './LevelTitle';
+import Score from './Score';
 
 export interface QuizHeader {
   score: number;
@@ -10,32 +11,19 @@ export interface QuizHeader {
   levels: Array<string>;
 }
 
-export const QuizHeader = ({
-  score,
-  levels,
-  currentLevel,
-}: QuizHeader): JSX.Element => {
+export const QuizHeader = (): JSX.Element => {
+  const levels = useSelector<QuizState, Array<Level>>((state) => state.levels);
+
   return (
     <header>
       <div className="header">
         <div className="header__row">
           <div>SongBird</div>
-          <Statistic size="mini">
-            <Statistic.Value>{score}</Statistic.Value>
-            <Statistic.Label>баллы</Statistic.Label>
-          </Statistic>
+          <Score />
         </div>
         <Segment.Group horizontal size="small">
           {levels.map((x, idx) => (
-            <Segment
-              inverted
-              textAlign="center"
-              key={idx}
-              color={currentLevel === idx ? 'green' : 'grey'}
-              disabled={currentLevel < idx}
-            >
-              {x}
-            </Segment>
+            <LevelTitle key={x.id} index={idx} name={x.name} />
           ))}
         </Segment.Group>
       </div>

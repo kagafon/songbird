@@ -1,16 +1,17 @@
 /* eslint-disable react/no-array-index-key */
 import * as React from 'react';
-import { Item, Container, Button } from 'semantic-ui-react';
 import { IAnswer } from 'components/commonTypes';
-
+import { useSelector } from 'react-redux';
+import { QuizState } from 'store/root-reducer';
 
 export interface AnswerDescriptionProps {
   answer: IAnswer;
 }
 
-export const AnswerDescription = ({
-  answer,
-}: AnswerDescriptionProps): JSX.Element => {
+export const AnswerDescription = (): JSX.Element => {
+  const answer = useSelector<QuizState, IAnswer>(
+    (state) => state.selectedOption
+  );
   return answer ? (
     <div>
       <div style={{ backgroundImage: `url('${answer.image}')` }}> </div>

@@ -1,31 +1,26 @@
-/* eslint-disable react/no-array-index-key */
 import * as React from 'react';
-import useSound from 'use-sound';
-
-import { Item, Container, Button } from 'semantic-ui-react';
+import { Button } from 'semantic-ui-react';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectOption } from 'store/root-redux';
+import { QuizState } from 'store/root-reducer';
 import { IAnswer } from './commonTypes';
+// import useSound from 'use-sound';
+
 export interface AnswerOptionProps {
-  onSelectAnswer: (answer: IAnswer) => boolean;
   answer: IAnswer;
 }
 
-export const AnswerOption = ({
-  answer,
-  onSelectAnswer,
-}: AnswerOptionProps): JSX.Element => {
-  const [checkResult, setCheckResult] = React.useState<boolean>();
-  //const [play] = useSound('assets/audio/hover.ogg', { volume: 0.5 });
+export const AnswerOption = ({ answer }: AnswerOptionProps): JSX.Element => {
+  const dispatch = useDispatch();
+  const checkResult = useSelector<QuizState, boolean>(
+    (state) => state.checkedState[answer.id]
+  );
+  // const [play] = useSound('assets/audio/hover.ogg', { volume: 0.5 });
 
-  React.useEffect(() => {
-    setCheckResult(undefined);
-  }, [answer]);
-
-  const onClick = React.useCallback(() => {
-    const result = onSelectAnswer(answer);
-    setCheckResult((prevCheck) =>
-      prevCheck === undefined ? result : prevCheck
-    );
-  }, [onSelectAnswer, answer]);
+  const onClick = React.useCallback(() => selectOption(dispatch, answer), [
+    answer,
+    dispatch,
+  ]);
 
   if (checkResult === undefined)
     return <Button onClick={onClick}>{answer.name}</Button>;
