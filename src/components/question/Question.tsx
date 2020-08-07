@@ -18,7 +18,9 @@ export const QuestionBlock = (): JSX.Element => {
   const rightAnswer = useSelector<QuizState, IAnswer>(
     (state) => state.rightAnswer
   );
-  const solved = useSelector<QuizState, boolean>((state) => state.solved);
+  const { solved, secretBird } = useSelector<QuizState, QuizState>(
+    (state) => state
+  );
   const dispatch = useDispatch();
 
   React.useEffect(() => {
@@ -29,7 +31,10 @@ export const QuestionBlock = (): JSX.Element => {
     <>
       <Container>
         <Item>
-          <Item.Image size="small" src={rightAnswer.image} />
+          <Item.Image
+            size="small"
+            src={solved ? rightAnswer.image : secretBird}
+          />
 
           <Item.Content>
             <Item.Header>

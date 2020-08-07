@@ -18,7 +18,10 @@ export const QuizHeader = (): JSX.Element => {
     <header>
       <div className="header">
         <div className="header__row">
-          <div>SongBird</div>
+          <div style={{ fontFamily: 'HTPasticceriaW01-Regular' }}>
+            <span style={{ color: 'yellow' }}>Song</span>
+            <span style={{ color: 'red' }}>bird</span>
+          </div>
           <Score />
         </div>
         <Segment.Group horizontal size="small">

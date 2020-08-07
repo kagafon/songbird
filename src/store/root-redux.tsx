@@ -7,5 +7,7 @@ export const selectOption = (
   selectedOption: IAnswer
 ) => dispatch({ type: ActionType.SelectOption, payload: { selectedOption } });
 
-export const loadNextLevel = (dispatch: Dispatch<DispatchAction>) =>
-  dispatch({ type: ActionType.LoadNextLevel });
+export const loadNextLevel = (
+  dispatch: Dispatch<DispatchAction>,
+  level?: number
+) => dispatch({ type: ActionType.LoadNextLevel, payload: { level } });

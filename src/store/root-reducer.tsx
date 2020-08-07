@@ -1,6 +1,6 @@
 import { Action, Reducer } from 'redux';
 import { IAnswer } from 'components/commonTypes';
-import sourceData from 'components/data';
+import sourceData from 'data/data';
 
 export interface Level {
   id: number;
@@ -18,6 +18,9 @@ export interface QuizState {
   solved: boolean;
   checkedState: Record<number, boolean>;
   levelStates: Record<number, boolean>;
+  finished: boolean;
+  maxScore: number;
+  secretBird: string;
 }
 
 export const QuizState: QuizState = {
@@ -31,6 +34,9 @@ export const QuizState: QuizState = {
   solved: false,
   checkedState: {},
   levelStates: {},
+  finished: false,
+  maxScore: sourceData.reduce((acc, x) => acc + x.items.length - 1, 0),
+  secretBird: 'assets/images/secretBird.jpg',
 };
 
 export interface DispatchAction extends Action {
@@ -73,7 +79,14 @@ export const rootReducer: Reducer<QuizState, DispatchAction> = (
     }
 
     case ActionType.LoadNextLevel: {
-      const level = state.level + 1;
+      const level =
+        action.payload?.level === undefined
+          ? state.level + 1
+          : action.payload.level;
+      if (level >= sourceData.length) {
+        return { ...state, finished: true };
+      }
+
       const answers = [...sourceData[level].items].sort(
         () => Math.random() - 0.5
       );
@@ -88,10 +101,11 @@ export const rootReducer: Reducer<QuizState, DispatchAction> = (
         level,
         selectedOption: null,
         levelStates: {
-          ...state.levelStates,
+          ...(level ? state.levelStates : {}),
           [level - 1]: false,
           [level]: true,
         },
+        finished: false,
       };
     }
     default:

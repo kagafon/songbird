@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
@@ -14,9 +15,10 @@ module.exports = (env, options) => {
   const isProduction = options.mode === 'production';
   return {
     mode: options.mode,
-    devtool: 'inline-source-map',
+    devtool: isProduction ? false : 'source-map',
     entry: {
       script: './src/index.tsx',
+      data: './src/data/data.ts',
     },
     output: {
       path: PATHS.dist,
@@ -127,9 +129,15 @@ module.exports = (env, options) => {
         },
       ]),
       new CleanWebpackPlugin(),
+      new webpack.optimize.AggressiveSplittingPlugin({
+        minSize: 30000,
+        maxSize: 50000,
+      }),
       //new BundleAnalyzerPlugin(),
     ],
     optimization: {
+      minimize: isProduction,
+      removeAvailableModules: isProduction,
       splitChunks: {
         chunks: 'all',
         minSize: 20000,

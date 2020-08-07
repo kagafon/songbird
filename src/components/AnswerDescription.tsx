@@ -15,6 +15,7 @@ export const AnswerDescription = (): JSX.Element => {
   return answer ? (
     <div>
       <div style={{ backgroundImage: `url('${answer.image}')` }}> </div>
+      <img src={answer.image} alt={answer.species} />
       <div>{answer.name} </div>
       <div>{answer.species} </div>
       <div>{answer.audio} </div>
