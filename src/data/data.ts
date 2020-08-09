@@ -238,7 +238,7 @@ export default [
     ],
   },
   {
-    name: 'Птицы Австралия',
+    name: 'Австралия',
     id: 4,
     items: [
       {

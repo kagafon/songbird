@@ -1,6 +1,27 @@
-@import 'header';
+//@import '~bootstrap';
+@import 'variables';
+@import '~bootswatch/dist/slate/variables';
+@import '~bootstrap/scss/bootstrap';
+@import '~bootswatch/dist/slate/bootswatch';
 
-#root {
-  max-width: 800px;
-  margin: 0 auto;
+//@import 'header';
+
+body {
+  background-color: $queen-blue;
 }
+
+.pagination .page-link {
+  background-image: none;
+  background-color: $pistachio;
+  & .current {
+    background-color: $zomp;
+  }
+}
+.pagination .current .page-link {
+  background-color: $zomp;
+}
+
+// #root {
+//   max-width: 800px;
+//   margin: 0 auto;
+// }
