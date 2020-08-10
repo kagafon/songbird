@@ -14,9 +14,11 @@ export const LevelTitle = ({ index, name }: LevelTitleProps): JSX.Element => {
     (state) => state.levelStates[index]
   );
 
-  return (
+  return levelState === undefined ? (
+    <PageItem className="flex-grow-1 text-center">{name}</PageItem>
+  ) : (
     <PageItem
-      className={`flex-grow-1 text-center ${levelState ? 'current' : ''}`}
+      className={`flex-grow-1 text-center ${levelState ? 'current' : 'passed'}`}
     >
       {name}
     </PageItem>

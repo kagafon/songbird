@@ -4,23 +4,43 @@
 @import '~bootstrap/scss/bootstrap';
 @import '~bootswatch/dist/slate/bootswatch';
 
+@import 'utils';
+
 //@import 'header';
 
 body {
-  background-color: $queen-blue;
+  user-select: none;
 }
 
 .pagination .page-link {
   background-image: none;
-  background-color: $pistachio;
-  & .current {
-    background-color: $zomp;
-  }
-}
-.pagination .current .page-link {
-  background-color: $zomp;
+  outline: none;
+  pointer-events: none;
+  user-select: none;
+  text-shadow: none;
 }
 
+.pagination .current .page-link {
+  background-color: $color-6;
+}
+
+.pagination .passed .page-link {
+  background-color: $color-3;
+  color: $color-5;
+}
+
+.list-group-item {
+  pointer-events: none;
+}
+
+.quiz-img {
+  width: 200px;
+  height: 155px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  border: 1px solid $color-5;
+}
 // #root {
 //   max-width: 800px;
 //   margin: 0 auto;

@@ -19,12 +19,12 @@ export const QuizHeader = (): JSX.Element => {
     <header>
       <div className="d-flex flex-column mt-1">
         <div className="d-flex justify-content-between align-items-center p-1">
-          <h2
+          <h1
             style={{ fontFamily: 'HTPasticceriaW01-Regular', marginBottom: 0 }}
           >
-            <span className="text-warning">Song</span>
-            <span className="text-secondary">bird</span>
-          </h2>
+            <span className="text-color-2">Song</span>
+            <span className="text-color-4">bird</span>
+          </h1>
           <Score />
         </div>
         <Pagination className="d-flex justify-content-stretch flex-wrap">

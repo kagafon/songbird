@@ -7,6 +7,7 @@ import { QuizHeader } from './header/QuizHeader';
 import { QuestionBlock } from './question/Question';
 import AnswersBlock from './AnswersBlock';
 import ResultsModal from './ResultsModal';
+import { NextLevelButton } from './NextLevelButton';
 
 const QuizApp = (): JSX.Element => {
   return (
@@ -16,6 +17,7 @@ const QuizApp = (): JSX.Element => {
         <QuestionBlock />
         <AnswersBlock />
         <ResultsModal />
+        <NextLevelButton />
       </Container>
     </Provider>
   );

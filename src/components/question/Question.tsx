@@ -6,6 +6,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { QuizState } from 'store/root-reducer';
 import { IAnswer } from 'components/commonTypes';
 import { loadNextLevel } from 'store/root-redux';
+import { Jumbotron, Image, ListGroup, Row, Col } from 'react-bootstrap';
 
 export interface QuestionBlockProps {
   title: string;
@@ -28,28 +29,30 @@ export const QuestionBlock = (): JSX.Element => {
   }, [dispatch]);
 
   return rightAnswer ? (
-    <>
-      <Container>
-        <Item>
-          <Item.Image
-            size="small"
-            src={solved ? rightAnswer.image : secretBird}
+    <Container className="my-1">
+      <Row className="rounded bg-color-3">
+        <div className="p-3">
+          <div
+            className="rounded quiz-img"
+            style={{
+              backgroundImage: `url(${
+                solved ? rightAnswer.image : secretBird
+              })`,
+            }}
           />
-
-          <Item.Content>
-            <Item.Header>
-              {solved ? rightAnswer.name : '****************'}
-            </Item.Header>
-          </Item.Content>
-          <Item.Description>
-            <AudioPlayer track={rightAnswer.audio} playing pause={solved} />
-          </Item.Description>
-        </Item>
-      </Container>
-      <Button disabled={!solved} onClick={() => loadNextLevel(dispatch)}>
-        Дальше
-      </Button>
-    </>
+        </div>
+        <div className="p-3 flex-grow-1 w-50 text-color-5">
+          <ListGroup as="ul" variant="flush">
+            <ListGroup.Item action={false} as="div" className="pt-0">
+              <h3>{solved ? rightAnswer.name : '******'}</h3>
+            </ListGroup.Item>
+            <ListGroup.Item>
+              <AudioPlayer track={rightAnswer.audio} playing pause={solved} />
+            </ListGroup.Item>
+          </ListGroup>
+        </div>
+      </Row>
+    </Container>
   ) : (
     <>Загружаемся...</>
   );
