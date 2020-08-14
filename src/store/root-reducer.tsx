@@ -69,7 +69,12 @@ export const rootReducer: Reducer<QuizState, DispatchAction> = (
         ...state,
         selectedOption: action.payload.selectedOption,
         solved,
-        scoreToAdd: solved ? state.scoreToAdd : state.scoreToAdd - 1,
+        scoreToAdd: solved
+          ? state.scoreToAdd
+          : state.scoreToAdd -
+            (state.checkedState[action.payload.selectedOption.id] === undefined
+              ? 1
+              : 0),
         score: solved ? state.score + state.scoreToAdd : state.score,
         checkedState: {
           ...state.checkedState,
