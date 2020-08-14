@@ -1,4 +1,5 @@
 //@import '~bootstrap';
+@import 'fonts';
 @import 'variables';
 @import '~bootswatch/dist/slate/variables';
 @import '~bootstrap/scss/bootstrap';
@@ -29,9 +30,9 @@ body {
   color: $color-5;
 }
 
-.list-group-item {
+/* .list-group-item {
   pointer-events: none;
-}
+} */
 
 .quiz-img {
   width: 200px;
@@ -40,7 +41,10 @@ body {
   background-position: center;
   background-size: cover;
   border: 1px solid $color-5;
+  transition: background-image 0.2s ease-in;
 }
+
+
 // #root {
 //   max-width: 800px;
 //   margin: 0 auto;

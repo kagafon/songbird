@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectOption } from 'store/root-redux';
 import { QuizState } from 'store/root-reducer';
 import { IAnswer } from './commonTypes';
+import { ListGroupItem, ListGroup } from 'react-bootstrap';
 // import useSound from 'use-sound';
 
 export interface AnswerOptionProps {
@@ -23,11 +24,11 @@ export const AnswerOption = ({ answer }: AnswerOptionProps): JSX.Element => {
   ]);
 
   if (checkResult === undefined)
-    return <Button onClick={onClick}>{answer.name}</Button>;
+    return <ListGroup.Item onClick={onClick}>{answer.name}</ListGroup.Item>;
 
   return (
-    <Button color={checkResult ? 'green' : 'purple'} onClick={onClick}>
+    <ListGroup.Item color={checkResult ? 'green' : 'purple'} onClick={onClick}>
       {answer.name}
-    </Button>
+    </ListGroup.Item>
   );
 };

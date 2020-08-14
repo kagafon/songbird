@@ -127,6 +127,10 @@ module.exports = (env, options) => {
           from: 'src/assets/audio/',
           to: 'assets/audio/',
         },
+        {
+          from: 'src/assets/fonts/',
+          to: 'assets/fonts/',
+        },
       ]),
       new CleanWebpackPlugin(),
       new webpack.optimize.AggressiveSplittingPlugin({
