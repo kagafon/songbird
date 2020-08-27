@@ -17,7 +17,9 @@ const QuizApp = (): JSX.Element => {
         <QuestionBlock />
         <AnswersBlock />
         <ResultsModal />
-        <NextLevelButton />
+        <Container>
+          <NextLevelButton />
+        </Container>
       </Container>
     </Provider>
   );

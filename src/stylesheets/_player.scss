@@ -1,0 +1,19 @@
+.rhap_horizontal .rhap_controls-section {
+  display: none;
+}
+
+.rhap_play-pause-button {
+  border: solid;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  & > svg {
+    width: 60%;
+  }
+
+  &:hover > svg {
+    width: 63%;
+  }
+}

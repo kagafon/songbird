@@ -4,6 +4,7 @@ import { IAnswer } from 'components/commonTypes';
 import { useSelector } from 'react-redux';
 import { QuizState } from 'store/root-reducer';
 import { Row, Col, Container } from 'react-bootstrap';
+import { StyledAudioPlayer } from './AudioPlayer';
 
 export interface AnswerDescriptionProps {
   answer: IAnswer;
@@ -27,7 +28,7 @@ export const AnswerDescription = (): JSX.Element => {
         <Col xs="6">
           <div>{answer.name} </div>
           <div>{answer.species} </div>
-          <div>{answer.audio} </div>
+          <StyledAudioPlayer track={answer.audio} />
         </Col>
       </Row>
       <Row className="mt-3">

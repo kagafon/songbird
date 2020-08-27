@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Item, Container, Button } from 'semantic-ui-react';
 
-import { AudioPlayer } from 'components/AudioPlayer';
+import { StyledAudioPlayer } from 'components/AudioPlayer';
 import { useSelector, useDispatch } from 'react-redux';
 import { QuizState } from 'store/root-reducer';
 import { IAnswer } from 'components/commonTypes';
@@ -25,7 +25,7 @@ export const QuestionBlock = (): JSX.Element => {
   );
   const dispatch = useDispatch();
 
-/*   const transitions = useTransition(solved, null, {
+  /*   const transitions = useTransition(solved, null, {
     from: { opacity: 1 },
     update: { opacity: 0 },
   });
@@ -35,9 +35,9 @@ export const QuestionBlock = (): JSX.Element => {
   }, [dispatch]);
 
   return rightAnswer ? (
-    <Container className="my-1">
-      <Row className="rounded bg-color-3">
-        <div className="p-3">
+    <Container>
+      <Row className="rounded bg-color-3 flex-column justify-content-center justify-content-md-start flex-md-row">
+        <div className="p-3 d-flex justify-content-center">
           <div
             className="rounded quiz-img"
             style={{
@@ -47,13 +47,18 @@ export const QuestionBlock = (): JSX.Element => {
             }}
           />
         </div>
-        <div className="p-3 flex-grow-1 w-50 text-color-5">
+        <div className="p-3 flex-grow-1 text-color-5">
           <ListGroup as="ul" variant="flush">
             <ListGroup.Item action={false} as="div" className="pt-0">
               <h3>{solved ? rightAnswer.name : '******'}</h3>
             </ListGroup.Item>
             <ListGroup.Item>
-              <AudioPlayer track={rightAnswer.audio} playing pause={solved} />
+              <StyledAudioPlayer
+                track={rightAnswer.audio}
+                playing
+                loop
+                pause={solved}
+              />
             </ListGroup.Item>
           </ListGroup>
         </div>
