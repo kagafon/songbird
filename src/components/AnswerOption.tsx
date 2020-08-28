@@ -30,13 +30,33 @@ export const AnswerOption = ({ answer }: AnswerOptionProps): JSX.Element => {
       (checkResult ? playWin : playFail)();
     }
   }, [checkResult, playWin, playFail]);
-
-  if (checkResult === undefined)
-    return <ListGroup.Item onClick={onClick}>{answer.name}</ListGroup.Item>;
-
+  const getColor = React.useCallback(() => {
+    if (checkResult === undefined) return 'color-5';
+    if (checkResult) return 'success';
+    return 'danger';
+  }, [checkResult]);
   return (
-    <ListGroup.Item color={checkResult ? 'green' : 'purple'} onClick={onClick}>
-      {answer.name}
+    <ListGroup.Item
+      onClick={onClick}
+      className={`bg-${checkResult === undefined ? 'color-3' : 'dark'}`}
+    >
+      <div className="d-flex flex-row">
+        <div
+          className={`d-flex bg-${getColor()} align-items-center m-2`}
+          style={{
+            width: '10px',
+            height: '10px',
+            borderRadius: '50%',
+            transition: 'background-color 0.2s ease-out',
+          }}
+        />
+        <div
+          className={`d-flex align-items-center text-${getColor()}`}
+          style={{ transition: 'color 0.2s ease-out' }}
+        >
+          {answer.name}
+        </div>
+      </div>
     </ListGroup.Item>
   );
 };
