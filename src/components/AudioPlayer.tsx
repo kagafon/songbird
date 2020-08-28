@@ -1,10 +1,7 @@
-/* eslint-disable react/no-array-index-key */
 import * as React from 'react';
-import { Statistic, Step, Icon, Segment, Container } from 'semantic-ui-react';
 import AudioPlayer, { RHAP_UI } from 'react-h5-audio-player';
 import PlayIcon from 'assets/images/play.svg';
 import PauseIcon from 'assets/images/pause.svg';
-import { LegacyRef } from 'react';
 
 export interface AudioPlayerProps {
   track: string;

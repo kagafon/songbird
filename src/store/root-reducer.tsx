@@ -95,12 +95,18 @@ export const rootReducer: Reducer<QuizState, DispatchAction> = (
       const answers = [...sourceData[level].items].sort(
         () => Math.random() - 0.5
       );
+      const rightAnswer =
+        answers[Math.floor(Math.random() * (answers.length - 1))];
+
+      // eslint-disable-next-line no-console
+      console.log(`Cheater mode: try ${rightAnswer.name}`);
+
       return {
         ...state,
         answers,
         scoreToAdd: answers.length - 1,
         score: level === 0 ? 0 : state.score,
-        rightAnswer: answers[Math.floor(Math.random() * (answers.length - 1))],
+        rightAnswer,
         solved: false,
         checkedState: {},
         level,
