@@ -206,7 +206,8 @@ export default [
         id: 3,
         name: 'Траурный дронго',
         species: 'Dicrurus adsimilis',
-        description: '',
+        description:
+          'Траурный дронго достигает длины до 25 см и имеет блестящее оперение чёрного цвета, у женских особей блеск выражен не так ярко. Его клюв чёрный, а глаза красные. Характерным является хвост, который раздваивается на конце.',
         image: 'assets/images/DicrurusAdsimilis.jpg',
         audio: 'assets/audio/DicrurusAdsimilis.mp3',
       },
@@ -232,7 +233,8 @@ export default [
         id: 6,
         name: 'Хохлатый турач',
         species: 'Dendroperdix sephaena',
-        description: '',
+        description:
+          'Хохлатый турач длиной примерно 33—35 см. Макушка головы тёмная, над глазами белые полосы. Клюв чёрный. Грудь с тёмными пятнами, причём рисунок у самок более отчётливый. Спина рыжая, брюхо блёклое с тонкими полосами. Ноги красноватые. У молодых птиц «брови» скорее желтовато-коричневого цвета.',
         image: 'assets/images/DendroperdixSephaena.jpg',
         audio: 'assets/audio/DendroperdixSephaena.mp3',
       },
@@ -306,7 +308,8 @@ export default [
         id: 1,
         name: 'Мадагаскарская поганка',
         species: 'Tachybaptus pelzelnii',
-        description: '',
+        description:
+          'Внесена в Международную Красную книгу МСОП, сохранилось от 1000 до 2000 особей. В 1929 году, когда вид был открыт, он считался обычным для этого и некоторых других (небольших) озёр, однако сейчас он находится под угрозой.',
         image: 'assets/images/TachybaptusPelzelnii.jpg',
         audio: 'assets/audio/TachybaptusPelzelnii.mp3',
       },
@@ -315,7 +318,7 @@ export default [
         name: 'Совка Торотороко',
         species: 'Otus madagascariensis',
         description:
-          'встречается в центральных и западных районах Мадагаскара: в лесных районах с засушливым климатом, на бросовых землях, вблизи человеческого жилья. Совка неприхотлива и приспособлена к деградированным местообитаниям.',
+          'Встречается в центральных и западных районах Мадагаскара: в лесных районах с засушливым климатом, на бросовых землях, вблизи человеческого жилья. Совка неприхотлива и приспособлена к деградированным местообитаниям.',
         image: 'assets/images/OtusMadagascariensis.jpg',
         audio: 'assets/audio/OtusMadagascariensis.mp3',
       },
