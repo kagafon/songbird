@@ -17,7 +17,7 @@ export const AnswerDescription = (): JSX.Element => {
   return answer ? (
     <div className="border-color-2 h-100 rounded bg-color-3 text-color-5 d-flex flex-column">
       <div className="p-3 d-flex flex-column flex-md-row">
-        <div className="mr-md-3 d-flex justify-content-center">
+        <div className="mr-md-3 d-flex justify-content-center flex-shrink-0">
           <div
             className="rounded quiz-img"
             style={{
