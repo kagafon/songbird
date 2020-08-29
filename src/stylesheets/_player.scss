@@ -1,5 +1,6 @@
-.rhap_horizontal .rhap_controls-section {
-  display: none;
+.rhap_controls-section {
+  flex-basis: 60px;
+  flex-grow: 0;
 }
 
 .rhap_play-pause-button {
@@ -16,4 +17,35 @@
   &:hover > svg {
     width: 63%;
   }
+}
+
+.rhap_progress-section {
+  position: relative;
+}
+
+.rhap_time {
+  position: absolute;
+  top: 20px;
+  font-size: 0.7rem;
+
+  &.rhap_current-time {
+    left: 0;
+  }
+
+  &.rhap_total-time {
+    right: 0;
+  }
+}
+
+.rhap_progress-container {
+  align-self: flex-start;
+  margin-right: 0;
+  margin-left: 0;
+}
+
+.rhap_volume-container {
+  width: 80px;
+  position: absolute;
+  top: 22px;
+  left: calc(50% - 40px);
 }

@@ -28,17 +28,18 @@ export const StyledAudioPlayer = ({
       src={track}
       showJumpControls={false}
       autoPlayAfterSrcChange={false}
-      layout="horizontal"
+      layout="horizontal-reverse"
       loop={loop}
       ref={player}
       customProgressBarSection={[
-        RHAP_UI.MAIN_CONTROLS,
+        RHAP_UI.CURRENT_TIME,
         RHAP_UI.PROGRESS_BAR,
+        RHAP_UI.DURATION,
         RHAP_UI.VOLUME,
       ]}
       customVolumeControls={[RHAP_UI.CURRENT_TIME]}
       customAdditionalControls={[RHAP_UI.DURATION]}
-      customControlsSection={[]}
+      customControlsSection={[RHAP_UI.MAIN_CONTROLS]}
       customIcons={{
         play: <PlayIcon />,
         pause: <PauseIcon />,

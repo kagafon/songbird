@@ -3,9 +3,9 @@ import { Button } from 'semantic-ui-react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectOption } from 'store/root-redux';
 import { QuizState } from 'store/root-reducer';
-import { IAnswer } from './commonTypes';
 import { ListGroupItem, ListGroup } from 'react-bootstrap';
 import useSound from 'use-sound';
+import { IAnswer } from './commonTypes';
 
 export interface AnswerOptionProps {
   answer: IAnswer;
@@ -15,6 +15,9 @@ export const AnswerOption = ({ answer }: AnswerOptionProps): JSX.Element => {
   const dispatch = useDispatch();
   const checkResult = useSelector<QuizState, boolean>(
     (state) => state.checkedState[answer.id]
+  );
+  const selectedOption = useSelector<QuizState, IAnswer>(
+    (state) => state.selectedOption
   );
   // const [play] = useSound('assets/audio/hover.ogg', { volume: 0.5 });
   const [playFail] = useSound('assets/audio/fail.mp3', { volume: 1 });
@@ -38,7 +41,11 @@ export const AnswerOption = ({ answer }: AnswerOptionProps): JSX.Element => {
   return (
     <ListGroup.Item
       onClick={onClick}
-      className={`bg-${checkResult === undefined ? 'color-3' : 'dark'}`}
+      className={`${
+        selectedOption && selectedOption.id === answer.id
+          ? 'font-weight-bold'
+          : ''
+      }`}
     >
       <div className="d-flex flex-row">
         <div
@@ -51,7 +58,7 @@ export const AnswerOption = ({ answer }: AnswerOptionProps): JSX.Element => {
           }}
         />
         <div
-          className={`d-flex align-items-center text-${getColor()}`}
+          className="d-flex align-items-center text-color-5"
           style={{ transition: 'color 0.2s ease-out' }}
         >
           {answer.name}

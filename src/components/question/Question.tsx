@@ -36,8 +36,8 @@ export const QuestionBlock = (): JSX.Element => {
 
   return rightAnswer ? (
     <Container>
-      <Row className="rounded bg-color-3 flex-column justify-content-center justify-content-md-start flex-md-row">
-        <div className="p-3 d-flex justify-content-center">
+      <Row className="p-3 rounded bg-color-3 flex-column justify-content-center justify-content-md-start flex-md-row">
+        <div className="pr-md-3 d-flex justify-content-center">
           <div
             className="rounded quiz-img"
             style={{
@@ -47,20 +47,11 @@ export const QuestionBlock = (): JSX.Element => {
             }}
           />
         </div>
-        <div className="p-3 flex-grow-1 text-color-5">
-          <ListGroup as="ul" variant="flush">
-            <ListGroup.Item action={false} as="div" className="pt-0">
-              <h3>{solved ? rightAnswer.name : '******'}</h3>
-            </ListGroup.Item>
-            <ListGroup.Item>
-              <StyledAudioPlayer
-                track={rightAnswer.audio}
-                playing
-                loop
-                pause={solved}
-              />
-            </ListGroup.Item>
-          </ListGroup>
+        <div className="p-0 flex-grow-1 text-color-5 text-center">
+          <h3 className="p-3 m-0 text-center text-md-left">
+            {solved ? rightAnswer.name : '******'}
+          </h3>
+          <StyledAudioPlayer track={rightAnswer.audio} loop pause={solved} />
         </div>
       </Row>
     </Container>
