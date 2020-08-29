@@ -21,6 +21,13 @@ const QuizApp = (): JSX.Element => {
           <NextLevelButton />
         </Container>
       </Container>
+      <footer>
+        <small className="text-left">
+          Font made from{' '}
+          <a className="link" href="http://www.onlinewebfonts.com">oNline Web Fonts</a>{' '}
+          licensed by CC BY 3.0
+        </small>
+      </footer>
     </Provider>
   );
 };
