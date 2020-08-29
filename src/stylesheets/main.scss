@@ -33,10 +33,6 @@ body {
   color: $color-5;
 }
 
-/* .list-group-item {
-  pointer-events: none;
-} */
-
 .quiz-img {
   width: 200px;
   height: 155px;
@@ -47,8 +43,34 @@ body {
   transition: background-image 0.2s ease-in;
 }
 
+.answer-description__text {
+  @include media-breakpoint-up(md){
+    position: absolute;
+  } 
+}
 
-// #root {
-//   max-width: 800px;
-//   margin: 0 auto;
-// }
+.page-item {
+  @include media-breakpoint-down(sm){
+    flex-basis: 33%;
+
+    &:first-child .page-link {
+        border-bottom-left-radius: 0;
+    }
+    &:last-child .page-link {
+      border-top-right-radius: 0;
+    }
+
+    &:nth-child(n+4) .page-link {
+      margin-top: -1px;
+    }
+
+    &:nth-child(3) .page-link {
+      border-top-right-radius: 0.25rem;
+    }
+
+    &:nth-child(4) .page-link {
+      border-bottom-left-radius: 0.25rem;
+      margin-left: 0;
+    }
+  }
+}

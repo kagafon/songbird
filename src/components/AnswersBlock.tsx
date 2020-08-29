@@ -13,15 +13,15 @@ const AnswersBlock = (): JSX.Element => {
     (state) => state.answers
   );
   return answers ? (
-    <Row className="mt-3">
-      <Col xs="12" md="3">
+    <Row>
+      <Col xs="12" md="3" className="mt-3">
         <ListGroup>
           {answers.map((x) => (
             <AnswerOption key={x.id} answer={x} />
           ))}
         </ListGroup>
       </Col>
-      <Col xs="12" md="9">
+      <Col xs="12" md="9" className="mt-3 pl-md-0">
         <AnswerDescription />
       </Col>
     </Row>

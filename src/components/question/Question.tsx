@@ -36,7 +36,7 @@ export const QuestionBlock = (): JSX.Element => {
 
   return rightAnswer ? (
     <Container>
-      <Row className="p-3 rounded bg-color-3 flex-column justify-content-center justify-content-md-start flex-md-row">
+      <Row className="border-color-2 p-3 rounded bg-color-3 flex-column justify-content-center justify-content-md-start flex-md-row">
         <div className="pr-md-3 d-flex justify-content-center">
           <div
             className="rounded quiz-img"

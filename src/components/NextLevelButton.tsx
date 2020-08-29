@@ -13,17 +13,20 @@ export interface QuestionBlockProps {
 }
 
 export const NextLevelButton = (): JSX.Element => {
-  const solved = useSelector<QuizState, boolean>((state) => state.solved);
+  const { solved, level, maxLevel } = useSelector<QuizState, QuizState>(
+    (state) => state
+  );
   const dispatch = useDispatch();
 
   return (
-    <Row className="mt-3">
+    <Row className="my-3">
       <Button
+        variant={solved ? 'success' : 'primary'}
         className="w-100"
         disabled={!solved}
         onClick={() => loadNextLevel(dispatch)}
       >
-        Next Level
+        {level === maxLevel ? 'Показать результат' : 'Хочу еще!'}
       </Button>
     </Row>
   );

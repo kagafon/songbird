@@ -12,6 +12,7 @@ export interface QuizState {
   score: number;
   scoreToAdd: number;
   level: number;
+  maxLevel: number;
   answers: Array<IAnswer>;
   levels: Array<Level>;
   rightAnswer: IAnswer;
@@ -30,6 +31,7 @@ export const QuizState: QuizState = {
   level: -1,
   answers: [],
   levels: sourceData.map((x) => ({ id: x.id, name: x.name })),
+  maxLevel: sourceData.length - 1,
   rightAnswer: null,
   solved: false,
   checkedState: {},

@@ -16,6 +16,13 @@
   .bg-#{$name} {
     background-color: $color;
   }
+
+  .border-#{$name} {
+    border: solid 1px $color;
+  }
+  .border-bottom-#{$name} {
+    border-bottom: solid 1px $color;
+  }
 }
 
 h1,

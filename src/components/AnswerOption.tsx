@@ -41,15 +41,13 @@ export const AnswerOption = ({ answer }: AnswerOptionProps): JSX.Element => {
   return (
     <ListGroup.Item
       onClick={onClick}
-      className={`${
-        selectedOption && selectedOption.id === answer.id
-          ? 'font-weight-bold'
-          : ''
+      className={`px-md-1 border-color-2 ${
+        selectedOption && selectedOption.id === answer.id ? 'bg-color-2' : ''
       }`}
     >
-      <div className="d-flex flex-row">
+      <div className="d-flex flex-row align-items-center">
         <div
-          className={`d-flex bg-${getColor()} align-items-center m-2`}
+          className={`d-flex bg-${getColor()} align-items-center m-2 flex-shrink-0 border-color-5`}
           style={{
             width: '10px',
             height: '10px',
