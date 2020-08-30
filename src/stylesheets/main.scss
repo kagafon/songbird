@@ -44,24 +44,28 @@ body {
 }
 
 .answer-description__text {
-  @include media-breakpoint-up(md){
+  @include media-breakpoint-up(md) {
     position: absolute;
-  } 
+  }
 }
 
 .page-item {
-  @include media-breakpoint-down(sm){
+  @include media-breakpoint-down(sm) {
     flex-basis: 33%;
 
     &:first-child .page-link {
-        border-bottom-left-radius: 0;
+      border-bottom-left-radius: 0;
     }
     &:last-child .page-link {
       border-top-right-radius: 0;
     }
 
-    &:nth-child(n+4) .page-link {
+    &:nth-child(n + 4) {
       margin-top: -1px;
+
+      & .page-link {
+        margin-top: -1px;
+      }
     }
 
     &:nth-child(3) .page-link {
