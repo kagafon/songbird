@@ -2,6 +2,8 @@ import { Action, Reducer } from 'redux';
 import { IAnswer } from 'components/commonTypes';
 import sourceData from 'data/data';
 
+const preloadedImages: Record<string, HTMLImageElement> = {};
+
 export interface Level {
   id: number;
   name: string;
@@ -93,7 +95,13 @@ export const rootReducer: Reducer<QuizState, DispatchAction> = (
       if (level >= sourceData.length) {
         return { ...state, finished: true };
       }
-
+      sourceData[level].items.forEach((x) => {
+        if (!preloadedImages[x.image]) {
+          const image = new Image();
+          image.src = x.image;
+          preloadedImages[x.image] = image;
+        }
+      });
       const answers = [...sourceData[level].items].sort(
         () => Math.random() - 0.5
       );
