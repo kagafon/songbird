@@ -1,0 +1,20 @@
+.header {
+  display: flex;
+  flex-direction: column;
+
+  &__row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  &__score {
+    font-size: 2rem;
+  }
+
+  &__level-title {
+    flex-grow: 1;
+    flex-basis: 120px;
+  }
+}
