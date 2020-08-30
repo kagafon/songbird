@@ -50,6 +50,11 @@ body {
   @include media-breakpoint-down(sm) {
     flex-basis: 33%;
 
+    & .page-link {
+      padding-left: 2px;
+      padding-right: 2px;
+    }
+
     &:first-child .page-link {
       border-bottom-left-radius: 0;
     }
