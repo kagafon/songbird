@@ -1,13 +1,11 @@
 import * as React from 'react';
-import { Item, Container, Button } from 'semantic-ui-react';
 
 import { StyledAudioPlayer } from 'components/AudioPlayer';
 import { useSelector, useDispatch } from 'react-redux';
 import { QuizState } from 'store/root-reducer';
 import { IAnswer } from 'components/commonTypes';
 import { loadNextLevel } from 'store/root-redux';
-import { Jumbotron, Image, ListGroup, Row, Col } from 'react-bootstrap';
-import { useTransition, animated } from 'react-spring';
+import { Row, Container } from 'react-bootstrap';
 
 export interface QuestionBlockProps {
   title: string;
@@ -25,11 +23,6 @@ export const QuestionBlock = (): JSX.Element => {
   );
   const dispatch = useDispatch();
 
-  /*   const transitions = useTransition(solved, null, {
-    from: { opacity: 1 },
-    update: { opacity: 0 },
-  });
- */
   React.useEffect(() => {
     loadNextLevel(dispatch);
   }, [dispatch]);

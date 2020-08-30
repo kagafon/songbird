@@ -1,9 +1,7 @@
-/* eslint-disable react/no-array-index-key */
 import * as React from 'react';
 import { IAnswer } from 'components/commonTypes';
 import { useSelector } from 'react-redux';
 import { QuizState } from 'store/root-reducer';
-import { Row, Col, Container } from 'react-bootstrap';
 import { StyledAudioPlayer } from './AudioPlayer';
 
 export interface AnswerDescriptionProps {

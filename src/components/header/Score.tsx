@@ -1,5 +1,4 @@
 import * as React from 'react';
-//import { Statistic } from 'semantic-ui-react';
 import { useSelector } from 'react-redux';
 import { QuizState } from 'store/root-reducer';
 

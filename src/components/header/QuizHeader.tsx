@@ -1,5 +1,4 @@
 import * as React from 'react';
-// import { Segment } from 'semantic-ui-react';
 import { useSelector } from 'react-redux';
 import { QuizState, Level } from 'store/root-reducer';
 import { Pagination } from 'react-bootstrap';

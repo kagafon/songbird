@@ -1,10 +1,12 @@
 import * as React from 'react';
-import { Button } from 'semantic-ui-react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectOption } from 'store/root-redux';
 import { QuizState } from 'store/root-reducer';
-import { ListGroupItem, ListGroup } from 'react-bootstrap';
+import { ListGroup } from 'react-bootstrap';
 import useSound from 'use-sound';
+import FailSound from 'assets/audio/fail.mp3';
+import WinSound from 'assets/audio/win.mp3';
+
 import { IAnswer } from './commonTypes';
 
 export interface AnswerOptionProps {
@@ -19,19 +21,8 @@ export const AnswerOption = ({ answer }: AnswerOptionProps): JSX.Element => {
   const selectedOption = useSelector<QuizState, IAnswer>(
     (state) => state.selectedOption
   );
-  const [playFail, exposedDataFail] = useSound('assets/audio/fail.mp3', {
-    volume: 1,
-  });
-  if (exposedDataFail.sound && exposedDataFail.sound.usingWebAudio) {
-    exposedDataFail.sound.usingWebAudio = false;
-  }
-
-  const [playWin, exposedDataWin] = useSound('assets/audio/win.mp3', {
-    volume: 1,
-  });
-  if (exposedDataWin.sound && exposedDataWin.sound.usingWebAudio) {
-    exposedDataWin.sound.usingWebAudio = false;
-  }
+  const [playFail] = useSound(FailSound, { volume: 1 });
+  const [playWin] = useSound(WinSound, { volume: 1 });
 
   const onClick = React.useCallback(() => selectOption(dispatch, answer), [
     answer,
@@ -43,6 +34,7 @@ export const AnswerOption = ({ answer }: AnswerOptionProps): JSX.Element => {
       (checkResult ? playWin : playFail)();
     }
   }, [checkResult, playWin, playFail]);
+
   const getColor = React.useCallback(() => {
     if (checkResult === undefined) return 'color-5';
     if (checkResult) return 'success';

@@ -1,12 +1,11 @@
 import * as React from 'react';
 
-import { Button } from 'semantic-ui-react';
 import { useSelector } from 'react-redux';
 import { QuizState } from 'store/root-reducer';
+import { Row, Col, ListGroup } from 'react-bootstrap';
 import { AnswerDescription } from './AnswerDescription';
 import { IAnswer } from './commonTypes';
 import { AnswerOption } from './AnswerOption';
-import { Row, Col, ListGroup } from 'react-bootstrap';
 
 const AnswersBlock = (): JSX.Element => {
   const answers = useSelector<QuizState, Array<IAnswer>>(

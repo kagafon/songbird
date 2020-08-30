@@ -3,8 +3,6 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-//const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-//const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 const PATHS = {
   dist: path.resolve(__dirname, 'dist'),
@@ -100,6 +98,17 @@ module.exports = (env, options) => {
           ],
         },
         {
+          test: /\.(mp3)$/,
+          use: [
+            {
+              loader: 'file-loader',
+              options: {
+                name: 'assets/audio/[name].[ext]',
+              },
+            },
+          ],
+        },
+        {
           test: /\.(ttf|eot|woff|woff2)$/,
           use: [
             {
@@ -151,7 +160,6 @@ module.exports = (env, options) => {
         minSize: 30000,
         maxSize: 50000,
       }),
-      //new BundleAnalyzerPlugin(),
     ],
     optimization: {
       minimize: isProduction,

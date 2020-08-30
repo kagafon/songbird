@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { useSelector } from 'react-redux';
 import { QuizState } from 'store/root-reducer';
-//import { Segment } from 'semantic-ui-react';
 import { PageItem } from 'react-bootstrap';
 
 export interface LevelTitleProps {
